@@ -28,7 +28,7 @@ router = APIRouter()
 @router.post("/blogs", response_model=BlogInDB)
 def create_blog(blog: BlogCreate, token: str=Depends(decode_access_token)):
     blog_dict = blog.dict()
-    print(user["email"])
+    
     blog_dict.update({
         "author": user["email"],
         "created_at": datetime.now(timezone.utc),
